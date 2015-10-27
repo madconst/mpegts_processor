@@ -8,7 +8,8 @@ An example demonstrating:
 * PAT and PMT analyzing
 * errors reporting
 
-== Compiling ==
+Compiling
+---------
 
     mkdir build
     cd build
@@ -18,7 +19,8 @@ An example demonstrating:
 
 (use any .ts file as in example above)
 
-== Usage ==
+Usage
+-----
 
     Allowed options:
       -h [ --help ]           show help message
