@@ -29,7 +29,7 @@ Usage
 Typical output
 --------------
 
-    $ ./mpegts_analyzer -i /mnt/hdd32/home/cos/programming/c++/mpegts_processor/media_content/football.ts
+    $ ./mpegts_analyzer -i media_content/football.ts
     Got sync
     .........................................
     Statistics:
