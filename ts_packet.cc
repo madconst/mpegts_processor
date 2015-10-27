@@ -16,8 +16,6 @@ using boost::uint16_t;
 using boost::uint32_t;
 using boost::uint64_t;
 
-using namespace std; // remove later
-
 TsPacket::TsPacket(unsigned char* data) // must be exactly 188 bytes long
 {
     parsePacket(data);
@@ -39,7 +37,7 @@ void TsPacket::parsePacket(const unsigned char* data)
     // Construct payload:
     if (header.contains_payload) {
         if (adf_length + 5 >= 188) {
-            throw string("Adaptation field exceeded packet length");
+            throw std::string("Adaptation field exceeded packet length");
         }
         payload_chunk = vector<unsigned char>(&data[5] + adf_length, &data[188]);
     }
@@ -50,17 +48,17 @@ void TsPacket::parseHeader(const unsigned char* data)
 }
 void TsPacket::parseAdaptationField(const unsigned char* data)
 {
-    copy(data, data + 2, adaptation_field.base.data);
+    std::copy(data, data + 2, adaptation_field.base.data);
 
     unsigned int index = 2;
 
     if (adaptation_field.base.pcr_flag) {
-        copy(data + index, data + index + 6, adaptation_field.pcr.data);
+        std::copy(data + index, data + index + 6, adaptation_field.pcr.data);
         index += 6;
     }
 
     if (adaptation_field.base.opcr_flag) {
-        copy(data + index, data + index + 6, adaptation_field.pcr.data);
+        std::copy(data + index, data + index + 6, adaptation_field.pcr.data);
         index += 6;
     }
 

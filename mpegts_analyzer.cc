@@ -10,8 +10,13 @@
 
 #include "ts_demuxer.h"
 
-using namespace std;
 namespace po = boost::program_options;
+
+using std::cout;
+using std::endl;
+using std::dec;
+using std::hex;
+using std::setw;
 
 void sigintHandler(int signum)
 {
@@ -155,7 +160,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    ifstream input(input_filename.c_str(), ios::in | ios::binary);
+    std::ifstream input(input_filename.c_str(), std::ios::in | std::ios::binary);
     if (input.fail()) {
         cout << "Failed to open the input file" << endl;
         return 1;
@@ -166,7 +171,7 @@ int main(int argc, char *argv[])
     std::signal(SIGINT, sigintHandler);
 
     try {
-        for (istreambuf_iterator<char> it = istreambuf_iterator<char>(input); it != istreambuf_iterator<char>(); ++it) {
+        for (std::istreambuf_iterator<char> it = std::istreambuf_iterator<char>(input); it != std::istreambuf_iterator<char>(); ++it) {
             ts_demuxer << *it;
         }
     } catch(int signum) {

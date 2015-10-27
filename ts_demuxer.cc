@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iterator>
 
-using namespace std;
+using std::map;
 
 TsDemuxer::TsDemuxer() : pat(NULL) {}
 TsDemuxer::~TsDemuxer()
@@ -110,8 +110,8 @@ void TsDemuxer::processPAT(const TsPES* pes)
         delete pat; // delete old PAT if present
     }
     pat = pat_;
-    cout << ".";
-    cout.flush();
+    std::cout << ".";
+    std::cout.flush();
 }
 void TsDemuxer::processPMT(const TsPES* pes)
 {
